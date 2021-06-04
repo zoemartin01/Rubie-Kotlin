@@ -36,11 +36,6 @@ tasks {
     }
 }
 
-repositories {
-    mavenCentral()
-    jcenter()
-}
-
 dependencies {
     implementation(group = "net.dv8tion", name = "JDA", version = JDA_VERSION)
     implementation("net.oneandone.reflections8:reflections8:0.11.7")
