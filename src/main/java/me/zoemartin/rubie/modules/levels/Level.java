@@ -4,11 +4,13 @@ import me.zoemartin.rubie.Bot;
 import me.zoemartin.rubie.core.*;
 import me.zoemartin.rubie.core.annotations.*;
 import me.zoemartin.rubie.core.interfaces.GuildCommand;
+import me.zoemartin.rubie.core.util.*;
+import me.zoemartin.rubie.database.entities.UserLevel;
 import me.zoemartin.rubie.modules.pagedEmbeds.PageListener;
 import me.zoemartin.rubie.modules.pagedEmbeds.PagedEmbed;
-import me.zoemartin.rubie.core.util.*;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.User;
 
 import java.time.Instant;
 import java.util.*;
@@ -49,7 +51,7 @@ public class Level extends GuildCommand {
                 start = args.size() > 1 && Parser.Int.isParsable(args.get(1)) ? Parser.Int.parse(args.get(1)) : 1;
             } else {
                 levels = Levels.getLevels(event.getGuild()).stream()
-                             .filter(userLevel -> event.getGuild().getMemberById(userLevel.getUser_id()) != null)
+                             .filter(userLevel -> event.getGuild().getMemberById(userLevel.getUserId()) != null)
                              .sorted(Comparator.comparingInt(UserLevel::getExp).reversed())
                              .collect(Collectors.toList());
                 start = !args.isEmpty() && Parser.Int.isParsable(args.get(0)) ? Parser.Int.parse(args.get(0)) : 1;
@@ -59,9 +61,9 @@ public class Level extends GuildCommand {
                 new EmbedBuilder().setTitle("Leaderboard").build(),
                 levels.stream()
                     .map(ul -> {
-                            User u = Bot.getJda().getUserById(ul.getUser_id());
+                            User u = Bot.getJda().getUserById(ul.getUserId());
                             if (u == null) return String.format("%d. `%s` - Level: `%s` - `%sxp`\n",
-                                levels.indexOf(ul) + 1, ul.getUser_id(), Levels.calcLevel(ul.getExp()), ul.getExp());
+                                levels.indexOf(ul) + 1, ul.getUserId(), Levels.calcLevel(ul.getExp()), ul.getExp());
                             return String.format("%d. %s - Level: `%s` - `%sxp`\n", levels.indexOf(ul) + 1,
                                 u.getAsMention(), Levels.calcLevel(ul.getExp()), ul.getExp());
                         }
@@ -96,7 +98,7 @@ public class Level extends GuildCommand {
             double expToNext = Levels.calcExp(lvl + 1);
 
             List<UserLevel> levels = Levels.getLevels(event.getGuild()).stream()
-                                         .filter(userLevel -> event.getGuild().getMemberById(userLevel.getUser_id()) != null)
+                                         .filter(userLevel -> event.getGuild().getMemberById(userLevel.getUserId()) != null)
                                          .sorted(Comparator.comparingInt(UserLevel::getExp).reversed())
                                          .collect(Collectors.toList());
 
