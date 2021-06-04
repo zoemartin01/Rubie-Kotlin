@@ -43,7 +43,7 @@ public class Warn extends GuildCommand {
             CommandArgumentException::new);
         String userId = event.getArgs().get(0);
 
-        User u = Bot.getJDA().getUserById(Parser.User.parse(userId));
+        User u = Bot.getJda().getUserById(Parser.User.parse(userId));
         Check.notNull(u, UserNotFoundException::new);
 
         String reason = lastArg(1, event);
@@ -79,7 +79,7 @@ public class Warn extends GuildCommand {
             Check.check(event.getArgs().size() == 1 && Parser.User.isParsable(event.getArgs().get(0)), CommandArgumentException::new);
             String userId = event.getArgs().get(0);
 
-            User u = Bot.getJDA().getUserById(Parser.User.parse(userId));
+            User u = Bot.getJda().getUserById(Parser.User.parse(userId));
             Check.notNull(u, UserNotFoundException::new);
 
             Session s = DatabaseUtil.getSessionFactory().openSession();
@@ -97,7 +97,7 @@ public class Warn extends GuildCommand {
                     .setAuthor(String.format("%s / %s", u.getAsTag(), u.getId()),
                         null, u.getEffectiveAvatarUrl())
                     .setTitle("Warnings (" + warns.size() + ")").build(), warns.stream().map(e -> {
-                    User moderator = Bot.getJDA().getUserById(e.getModerator_id());
+                    User moderator = Bot.getJda().getUserById(e.getModerator_id());
                     return new MessageEmbed.Field("Warn ID: `" + e.getUuid() + "`",
                         String.format("**Responsible Moderator**: %s\n\n" +
                                           "**On**: %s\n\n" +
@@ -140,7 +140,7 @@ public class Warn extends GuildCommand {
             ModLogEntity warn = warns.isEmpty() ? null : warns.get(0);
             Check.notNull(warn, () -> new ReplyError("No warning with the ID `%s`", uuid));
 
-            User u = Bot.getJDA().getUserById(warn.getUser_id());
+            User u = Bot.getJda().getUserById(warn.getUser_id());
 
             DatabaseUtil.deleteObject(warn);
 

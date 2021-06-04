@@ -30,7 +30,7 @@ public class UserInfo extends GuildCommand {
         String arg;
         if (event.getArgs().isEmpty()) u = event.getUser();
         else if (Parser.User.isParsable(arg = lastArg(0, event))) u = CacheUtils.getUser(arg);
-        else if (Parser.User.tagIsParsable(arg)) u = Bot.getJDA().getUserByTag(arg);
+        else if (Parser.User.tagIsParsable(arg)) u = Bot.getJda().getUserByTag(arg);
         if (u == null) u = event.getUser();
         Member member = CacheUtils.getMember(event.getGuild(), u.getId());
 

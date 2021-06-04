@@ -61,7 +61,7 @@ public class Note extends GuildCommand {
                 u = CacheUtils.getUser(arg);
                 userId = u == null ? Parser.User.parse(arg) : u.getId();
             } else if (Parser.User.tagIsParsable(arg)) {
-                u = Bot.getJDA().getUserByTag(arg);
+                u = Bot.getJda().getUserByTag(arg);
                 userId = u == null ? null : u.getId();
             }
 
@@ -104,7 +104,7 @@ public class Note extends GuildCommand {
                 u = CacheUtils.getUser(arg);
                 userId = u == null ? Parser.User.parse(arg) : u.getId();
             } else if (Parser.User.tagIsParsable(arg)) {
-                u = Bot.getJDA().getUserByTag(arg);
+                u = Bot.getJda().getUserByTag(arg);
                 userId = u == null ? null : u.getId();
             }
 
@@ -128,7 +128,7 @@ public class Note extends GuildCommand {
                         null, u == null ? null : u.getEffectiveAvatarUrl())
                     .setTitle("Notes (" + notes.size() + ")").build(), sorted.map(e -> {
                     User moderator = e.getModerator_id() == null ? null :
-                                         Bot.getJDA().getUserById(e.getModerator_id());
+                                         Bot.getJda().getUserById(e.getModerator_id());
                     return new MessageEmbed.Field("Note ID: `" + e.getUuid() + "`",
                         String.format("**Responsible Moderator**: %s\n\n" +
                                           "**On**: %s\n\n" +
@@ -170,7 +170,7 @@ public class Note extends GuildCommand {
             NoteEntity note = notes.isEmpty() ? null : notes.get(0);
             Check.notNull(note, () -> new ReplyError("No note with the ID `%s`", uuid));
 
-            User u = Bot.getJDA().getUserById(note.getUser_id());
+            User u = Bot.getJda().getUserById(note.getUser_id());
 
             DatabaseUtil.deleteObject(note);
 
@@ -203,7 +203,7 @@ public class Note extends GuildCommand {
                 u = CacheUtils.getUser(arg);
                 userId = u == null ? Parser.User.parse(arg) : u.getId();
             } else if (Parser.User.tagIsParsable(arg)) {
-                u = Bot.getJDA().getUserByTag(arg);
+                u = Bot.getJda().getUserByTag(arg);
                 userId = u == null ? null : u.getId();
             }
 

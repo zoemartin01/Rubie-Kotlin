@@ -15,7 +15,6 @@ import me.zoemartin.rubie.core.util.*;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -130,7 +129,7 @@ class Config extends GuildCommand {
                         .sorted(Comparator.comparingInt((ToIntFunction<Map.Entry<String, Integer>>) Map.Entry::getValue)
                                     .reversed())
                         .map(e -> {
-                                User u = Bot.getJDA().getUserById(e.getKey());
+                                User u = Bot.getJda().getUserById(e.getKey());
                                 if (u == null) return String.format("User: `%s` - Level: `%s` - Exp: `%s`\n", e.getKey(),
                                     Levels.calcLevel(e.getValue()), e.getValue());
                                 return String.format("User: %s - Level: `%s` - Exp: `%s`\n", u.getAsMention(),

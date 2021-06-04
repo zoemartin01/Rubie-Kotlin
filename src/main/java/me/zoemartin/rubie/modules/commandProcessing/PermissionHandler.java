@@ -8,7 +8,6 @@ import me.zoemartin.rubie.core.util.DatabaseUtil;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
-import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +43,7 @@ public class PermissionHandler {
 
     public static boolean checkUserPerms(AbstractCommand command, CommandEvent event) {
         if (command.commandPerm() == CommandPerm.EVERYONE) return true;
-        if (event.getUser().getId().equals(Bot.getOWNER())) return true;
+        if (event.getUser().getId().equals(Bot.getOwner())) return true;
 
         if (event instanceof GuildCommandEvent) {
             return getHighestFromUser(((GuildCommandEvent) event).getGuild(), ((GuildCommandEvent) event).getMember()).raw() >= command.commandPerm().raw();

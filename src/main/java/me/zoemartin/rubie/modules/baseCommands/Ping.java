@@ -16,6 +16,6 @@ public class Ping extends AbstractCommand {
         Message m = event.getChannel().sendMessage("Pong!").complete();
 
         m.editMessage("Ping: " + (m.getTimeCreated().toInstant().toEpochMilli() - time)
-                          + "ms | Websocket: " + Bot.getJDA().getGatewayPing() + "ms").queue();
+                          + "ms | Websocket: " + Bot.getJda().getGatewayPing() + "ms").queue();
     }
 }

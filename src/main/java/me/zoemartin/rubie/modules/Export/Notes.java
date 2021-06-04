@@ -23,7 +23,6 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -83,7 +82,7 @@ public class Notes extends GuildCommand {
                 || !fields.get(0).getName().contains("Note")) return Collections.emptyList();
 
         if (embed.getAuthor() == null || embed.getAuthor().getName() == null) return Collections.emptyList();
-        User u = Bot.getJDA().getUserByTag(embed.getAuthor().getName());
+        User u = Bot.getJda().getUserByTag(embed.getAuthor().getName());
         if (u == null) return Collections.emptySet();
         String user_id = u.getId();
 
@@ -116,7 +115,7 @@ public class Notes extends GuildCommand {
             String mod_tag = null;
             if (mod.find()) {
                 mod_tag = mod.group(1);
-                User u = Bot.getJDA().getUserByTag(mod_tag);
+                User u = Bot.getJda().getUserByTag(mod_tag);
                 mod_id = u == null ? null : u.getId();
             }
 
@@ -147,7 +146,7 @@ public class Notes extends GuildCommand {
             String mod_tag = null;
             if (mod != null && mod.find()) {
                 mod_tag = mod.group(1);
-                User u = Bot.getJDA().getUserByTag(mod_tag);
+                User u = Bot.getJda().getUserByTag(mod_tag);
                 mod_id = u == null ? null : u.getId();
             }
 

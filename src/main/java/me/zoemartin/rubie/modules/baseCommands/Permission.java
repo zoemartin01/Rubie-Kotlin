@@ -76,7 +76,7 @@ public class Permission extends GuildCommand {
                                      CommandPerm.fromString(args.get(0));
                 Check.notNull(cp, CommandArgumentException::new);
                 Check.entityReferenceNotNull(m, Member.class, mRef);
-                Check.check(!cp.equals(CommandPerm.OWNER) || event.getUser().getId().equals(Bot.getOWNER()),
+                Check.check(!cp.equals(CommandPerm.OWNER) || event.getUser().getId().equals(Bot.getOwner()),
                     CommandArgumentException::new);
 
                 if (cp.equals(CommandPerm.EVERYONE))
@@ -186,7 +186,7 @@ public class Permission extends GuildCommand {
                                      CommandPerm.fromString(args.get(0));
                 Check.notNull(cp, CommandArgumentException::new);
                 Check.entityReferenceNotNull(r, Role.class, rRef);
-                Check.check(!cp.equals(CommandPerm.OWNER) || event.getUser().getId().equals(Bot.getOWNER()),
+                Check.check(!cp.equals(CommandPerm.OWNER) || event.getUser().getId().equals(Bot.getOwner()),
                     CommandArgumentException::new);
 
                 if (cp.equals(CommandPerm.EVERYONE))

@@ -1,0 +1,72 @@
+{
+  "botToken": {
+    "var": "bot_token",
+    "prop": "bot.token",
+    "type": "String",
+    "optional": false,
+    "default": null
+  },
+  "owner": {
+    "var": "owner_id",
+    "prop": "owner.id",
+    "type": "String",
+    "optional": true,
+    "default": "212591138945630213"
+  },
+  "dbUrl": {
+    "var": "db_url",
+    "prop": "database.url",
+    "type": "String",
+    "optional": false,
+    "default": null
+  },
+  "dbUser": {
+    "var": "db_user",
+    "prop": "database.username",
+    "type": "String",
+    "optional": false,
+    "default": null
+  },
+  "dbPassword": {
+    "var": "db_pw",
+    "prop": "database.password",
+    "type": "String",
+    "optional": false,
+    "default": null
+  },
+  "statusCount": {
+    "var": "status_count",
+    "prop": "bot.status.count",
+    "type": "Integer",
+    "optional": true,
+    "default": 0
+  },
+  "statusMessage": {
+    "var": "status_msg",
+    "prop": "bot.status",
+    "type": "StringArray",
+    "optional": true,
+    "default": []
+  },
+  "statusType": {
+    "var": "status_type",
+    "prop": "bot.activity",
+    "type": "StringArray",
+    "optional": true,
+    "default": []
+  },
+  "gatekeeperUri": {
+    "var": "gk_uri",
+    "prop": "gatekeeper.uri",
+    "type": "String",
+    "optional": true,
+    "default": "https://zoe.pm/verify?key="
+  },
+  "gatekeeperEnabled": {
+    "var": "gk_enabled",
+    "prop": "gatekeeper.websocket.enabled",
+    "type": "Boolean",
+    "optional": true,
+    "default": true
+  }
+}

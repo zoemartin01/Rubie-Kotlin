@@ -24,7 +24,7 @@ public class TempBlockLevels implements JobProcessor {
             var settings = job.getSettings();
 
             if (!settings.keySet().containsAll(Set.of(GUILD, USER))) return;
-            var g = Bot.getJDA().getGuildById(settings.get(GUILD));
+            var g = Bot.getJda().getGuildById(settings.get(GUILD));
             if (g == null) return;
             var conf = Levels.getConfig(g);
             conf.unblocksUser(settings.get(USER));

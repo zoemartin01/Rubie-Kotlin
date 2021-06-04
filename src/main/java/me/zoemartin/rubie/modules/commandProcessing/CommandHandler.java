@@ -1,6 +1,5 @@
 package me.zoemartin.rubie.modules.commandProcessing;
 
-import me.zoemartin.rubie.Bot;
 import me.zoemartin.rubie.core.*;
 import me.zoemartin.rubie.core.exceptions.*;
 import me.zoemartin.rubie.core.interfaces.*;

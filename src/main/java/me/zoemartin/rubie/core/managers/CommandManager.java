@@ -36,7 +36,7 @@ public class CommandManager {
             try {
                 processor.process(event, input);
             } catch (ConsoleError e) {
-                if (event.getAuthor().getId().equals(Bot.getOWNER())) {
+                if (event.getAuthor().getId().equals(Bot.getOwner())) {
                     event.getChannel().sendMessageFormat("Error: `%s`", e.getMessage()).queue();
                     throw e;
                 }

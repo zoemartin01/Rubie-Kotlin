@@ -29,7 +29,7 @@ public class RemindMeJob implements JobProcessor {
 
             if (!settings.keySet().containsAll(Set.of(CHANNEL, GUILD, USER))) return;
 
-            var g = Bot.getJDA().getGuildById(settings.get(GUILD));
+            var g = Bot.getJda().getGuildById(settings.get(GUILD));
             if (g == null) return;
             var u = CacheUtils.getMember(g, settings.get(USER));
             var c = g.getTextChannelById(settings.get(CHANNEL));

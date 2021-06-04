@@ -62,7 +62,7 @@ public class Prefixes implements DatabaseEntry {
         Prefixes p = prefixesMap.getOrDefault(guildId, null);
         Collection<String> prefixes = new HashSet<>();
         if (p != null) prefixes.addAll(p.prefixes);
-        if (MENTION_PREFIX == null) MENTION_PREFIX = String.format("<@!%s> ", Bot.getJDA().getSelfUser().getId());
+        if (MENTION_PREFIX == null) MENTION_PREFIX = String.format("<@!%s> ", Bot.getJda().getSelfUser().getId());
         prefixes.add(MENTION_PREFIX);
         return Collections.unmodifiableCollection(prefixes);
     }

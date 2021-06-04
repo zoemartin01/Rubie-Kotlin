@@ -2,7 +2,6 @@ package me.zoemartin.rubie.modules.trigger;
 
 import me.zoemartin.rubie.Bot;
 import me.zoemartin.rubie.core.interfaces.Module;
-import me.zoemartin.rubie.core.managers.CommandManager;
 import me.zoemartin.rubie.core.util.DatabaseUtil;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;

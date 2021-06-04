@@ -102,7 +102,7 @@ public class Gatekeeper extends ListenerAdapter implements Module {
     static void verify(VerificationEntity entity) {
         if (!entity.isVerified()) return;
 
-        Guild guild = Bot.getJDA().getGuildById(entity.getGuild_id());
+        Guild guild = Bot.getJda().getGuildById(entity.getGuild_id());
         if (guild == null) return;
         Member member = guild.getMemberById(entity.getUser_id());
         if (member == null) return;

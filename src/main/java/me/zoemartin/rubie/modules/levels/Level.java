@@ -59,7 +59,7 @@ public class Level extends GuildCommand {
                 new EmbedBuilder().setTitle("Leaderboard").build(),
                 levels.stream()
                     .map(ul -> {
-                            User u = Bot.getJDA().getUserById(ul.getUser_id());
+                            User u = Bot.getJda().getUserById(ul.getUser_id());
                             if (u == null) return String.format("%d. `%s` - Level: `%s` - `%sxp`\n",
                                 levels.indexOf(ul) + 1, ul.getUser_id(), Levels.calcLevel(ul.getExp()), ul.getExp());
                             return String.format("%d. %s - Level: `%s` - `%sxp`\n", levels.indexOf(ul) + 1,

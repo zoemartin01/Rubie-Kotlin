@@ -21,8 +21,8 @@ public class CacheUtils {
         Check.check(Parser.User.isParsable(id), () -> new IllegalArgumentException("id not in correct format"));
 
         try {
-            User u = Bot.getJDA().getUserById(Parser.User.parse(id));
-            return u == null ? Bot.getJDA().retrieveUserById(id).complete() : u;
+            User u = Bot.getJda().getUserById(Parser.User.parse(id));
+            return u == null ? Bot.getJda().retrieveUserById(id).complete() : u;
         } catch (ErrorResponseException e) {
             throw new ReplyError("Error, user not found!");
         }
@@ -49,8 +49,8 @@ public class CacheUtils {
         if (id == null || !Parser.User.isParsable(id)) return null;
 
         try {
-            User u = Bot.getJDA().getUserById(Parser.User.parse(id));
-            return u == null ? Bot.getJDA().retrieveUserById(id).complete() : u;
+            User u = Bot.getJda().getUserById(Parser.User.parse(id));
+            return u == null ? Bot.getJda().retrieveUserById(id).complete() : u;
         } catch (ErrorResponseException e) {
             return null;
         }
@@ -80,9 +80,9 @@ public class CacheUtils {
         if (id == null || !Parser.Emote.isParsable(id)) return null;
 
         try {
-            var e = Bot.getJDA().getEmoteById(Parser.Emote.parse(id));
+            var e = Bot.getJda().getEmoteById(Parser.Emote.parse(id));
             if (e != null) return e;
-            return Bot.getJDA().getGuilds().stream()
+            return Bot.getJda().getGuilds().stream()
                        .map(guild -> guild.retrieveEmoteById(id).complete())
                        .filter(Objects::nonNull)
                        .findAny()

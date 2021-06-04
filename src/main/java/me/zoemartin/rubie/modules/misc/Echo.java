@@ -114,7 +114,7 @@ public class Echo extends GuildCommand {
 
             String echo = lastArg(tc == null ? 1 : 2, event);
 
-            Check.check(message.getAuthor().getId().equals(Bot.getJDA().getSelfUser().getId()),
+            Check.check(message.getAuthor().getId().equals(Bot.getJda().getSelfUser().getId()),
                 () -> new ReplyError("Mhhh looks like that message wasn't sent by me!"));
 
             message.editMessage(echo).queue();

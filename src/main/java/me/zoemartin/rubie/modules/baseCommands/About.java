@@ -5,15 +5,12 @@ import me.zoemartin.rubie.core.CommandEvent;
 import me.zoemartin.rubie.core.annotations.Command;
 import me.zoemartin.rubie.core.annotations.CommandOptions;
 import me.zoemartin.rubie.core.interfaces.AbstractCommand;
-import me.zoemartin.rubie.core.util.TimeUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import org.joda.time.*;
-import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.temporal.ChronoUnit;
 import java.util.Enumeration;
 import java.util.concurrent.TimeUnit;
 import java.util.jar.Manifest;
@@ -52,7 +49,7 @@ public class About extends AbstractCommand {
         eb.addField("Author", "<@!212591138945630213> / zowee#0001", false);
         eb.addField("Source Code", "https://github.com/zoemartin01/Rubie", false);
         eb.addField("Invite", "https://zoe.pm/invrubie", false);
-        eb.setThumbnail(Bot.getJDA().getSelfUser().getAvatarUrl());
+        eb.setThumbnail(Bot.getJda().getSelfUser().getAvatarUrl());
         eb.setFooter("Made with JDA",
             "https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/readme/logo.png");
 

@@ -56,7 +56,7 @@ public class ModLogs extends GuildCommand {
                 u = CacheUtils.getUser(arg);
                 userId = u == null ? Parser.User.parse(arg) : u.getId();
             } else if (Parser.User.tagIsParsable(arg)) {
-                u = Bot.getJDA().getUserByTag(arg);
+                u = Bot.getJda().getUserByTag(arg);
                 userId = u == null ? null : u.getId();
             }
 
@@ -80,7 +80,7 @@ public class ModLogs extends GuildCommand {
                         null, u == null ? null : u.getEffectiveAvatarUrl())
                     .setTitle("Modlogs (" + modlogs.size() + ")").build(), sorted.map(e -> {
                     User moderator = e.getModerator_id() == null ? null :
-                                         Bot.getJDA().getUserById(e.getModerator_id());
+                                         Bot.getJda().getUserById(e.getModerator_id());
                     return new MessageEmbed.Field(e.getType().name() + " | Modlog ID: `" + e.getUuid() + "`",
                         String.format("**Responsible Moderator**: %s\n\n" +
                                           "**On**: %s\n\n" +
@@ -122,7 +122,7 @@ public class ModLogs extends GuildCommand {
             ModLogEntity modlog = notes.isEmpty() ? null : notes.get(0);
             Check.notNull(modlog, () -> new ReplyError("No modlog with the ID `%s`", uuid));
 
-            User u = Bot.getJDA().getUserById(modlog.getUser_id());
+            User u = Bot.getJda().getUserById(modlog.getUser_id());
 
             DatabaseUtil.deleteObject(modlog);
 
@@ -154,7 +154,7 @@ public class ModLogs extends GuildCommand {
                 u = CacheUtils.getUser(arg);
                 userId = u == null ? Parser.User.parse(arg) : u.getId();
             } else if (Parser.User.tagIsParsable(arg)) {
-                u = Bot.getJDA().getUserByTag(arg);
+                u = Bot.getJda().getUserByTag(arg);
                 userId = u == null ? null : u.getId();
             }
 
