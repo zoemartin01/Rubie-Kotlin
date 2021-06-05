@@ -68,5 +68,54 @@
     "type": "Boolean",
     "optional": true,
     "default": true
+  },
+  "showAuthor": {
+    "var": "author_show",
+    "prop": "about.author.show",
+    "type": "Boolean",
+    "optional": true,
+    "default": true
+  },
+  "author": {
+    "var": "author",
+    "prop": "about.author.text",
+    "type": "String",
+    "optional": true,
+    "default": "<@!212591138945630213> / zowee#0001"
+  },
+  "showRepo": {
+    "var": "repo_show",
+    "prop": "about.repo.show",
+    "type": "Boolean",
+    "optional": true,
+    "default": true
+  },
+  "repo": {
+    "var": "repo",
+    "prop": "about.repo.url",
+    "type": "String",
+    "optional": true,
+    "default": "https://github.com/zoemartin01/Rubie"
+  },
+  "showInvite": {
+    "var": "invite_show",
+    "prop": "about.invite.show",
+    "type": "Boolean",
+    "optional": true,
+    "default": true
+  },
+  "invite": {
+    "var": "author",
+    "prop": "about.invite.url",
+    "type": "String",
+    "optional": true,
+    "default": "https://zoe.pm/invrubie"
+  },
+  "customPackage": {
+    "var": "custom_package",
+    "prop": "modules.custom.package",
+    "type": "String",
+    "optional": true,
+    "default": "com.example.package"
   }
 }
