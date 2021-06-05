@@ -57,6 +57,23 @@ public class DatabaseUtil {
         }
     }
 
+    public static <T> T saveObject(T t) {
+        Transaction transaction = null;
+        try (Session session = getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(t);
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+
+        return t;
+    }
+
     public static void deleteObject(Object... objects) {
         Transaction transaction = null;
         try (Session session = getSessionFactory().openSession()) {
@@ -135,7 +152,7 @@ public class DatabaseUtil {
         try (Session session = getSessionFactory().openSession()) {
             Collection<T> load = session.createQuery(queryString, tClass).list();
             return load.stream().filter(distinct(distinctKey))
-                       .collect(Collectors.toConcurrentMap(keyMapper, valueMapper));
+                    .collect(Collectors.toConcurrentMap(keyMapper, valueMapper));
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyMap();
@@ -151,8 +168,8 @@ public class DatabaseUtil {
             Collection<T> load = session.createQuery(queryString, tClass).list();
 
             return load.stream().collect(Collectors.groupingByConcurrent(groupingBy,
-                Collectors.mapping(Function.identity(),
-                    Collectors.toConcurrentMap(keyMapper, valueMapper))));
+                    Collectors.mapping(Function.identity(),
+                            Collectors.toConcurrentMap(keyMapper, valueMapper))));
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyMap();
@@ -169,8 +186,8 @@ public class DatabaseUtil {
             Collection<T> load = session.createQuery(queryString, tClass).list();
 
             return load.stream().filter(distinct(distinctKey)).collect(Collectors.groupingByConcurrent(groupingBy,
-                Collectors.mapping(Function.identity(),
-                    Collectors.toConcurrentMap(keyMapper, valueMapper))));
+                    Collectors.mapping(Function.identity(),
+                            Collectors.toConcurrentMap(keyMapper, valueMapper))));
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyMap();
@@ -186,7 +203,7 @@ public class DatabaseUtil {
             Collection<T> load = session.createQuery(queryString, tClass).list();
 
             return load.stream().collect(Collectors.groupingByConcurrent(groupingBy,
-                Collectors.mapping(mapper, collector)));
+                    Collectors.mapping(mapper, collector)));
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyMap();
