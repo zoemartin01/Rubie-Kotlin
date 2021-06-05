@@ -105,7 +105,7 @@
     "default": true
   },
   "invite": {
-    "var": "author",
+    "var": "invite",
     "prop": "about.invite.url",
     "type": "String",
     "optional": true,
