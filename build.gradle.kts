@@ -1,12 +1,14 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
+
 plugins {
     kotlin("jvm") version "1.5.10"
     application
     id("com.github.johnrengelman.shadow") version "5.2.0"
     java
     id("com.palantir.git-version") version "0.12.3"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.5.10"
 }
 
 val MAIN_CLASS_NAME = "me.zoemartin.rubie.Bot"
@@ -29,9 +31,13 @@ application {
 tasks {
     named<ShadowJar>("shadowJar") {
         manifest {
-            attributes(mapOf("Main-Class" to MAIN_CLASS_NAME,
-                "Implementation-Version" to version,
-                "jda-version" to JDA_VERSION))
+            attributes(
+                mapOf(
+                    "Main-Class" to MAIN_CLASS_NAME,
+                    "Implementation-Version" to version,
+                    "jda-version" to JDA_VERSION
+                )
+            )
         }
     }
 }
