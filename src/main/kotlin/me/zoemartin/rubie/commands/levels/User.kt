@@ -1,27 +1,20 @@
 package me.zoemartin.rubie.commands.levels
 
-import me.zoemartin.rubie.Bot.jda
 import me.zoemartin.rubie.core.AutoConfig
 import me.zoemartin.rubie.core.CommandPerm
 import me.zoemartin.rubie.core.GuildCommandEvent
 import me.zoemartin.rubie.core.annotations.Command
 import me.zoemartin.rubie.core.annotations.CommandOptions
 import me.zoemartin.rubie.core.annotations.SubCommand
-import me.zoemartin.rubie.core.annotations.SubCommand.AsBase
 import me.zoemartin.rubie.core.interfaces.GuildCommand
 import me.zoemartin.rubie.core.util.CacheUtils
-import me.zoemartin.rubie.core.util.EmbedUtil
 import me.zoemartin.rubie.core.util.Parser
 import me.zoemartin.rubie.database.entities.UserConfig
 import me.zoemartin.rubie.database.entities.UserLevel
 import me.zoemartin.rubie.managers.Levels
-import me.zoemartin.rubie.modules.pagedEmbeds.PageListener
-import me.zoemartin.rubie.modules.pagedEmbeds.PagedEmbed
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.User
 import java.time.Instant
-import java.util.*
-import java.util.stream.Collectors
 
 @Command
 @CommandOptions(

@@ -21,7 +21,6 @@ import me.zoemartin.rubie.core.util.*
 import me.zoemartin.rubie.database.entities.LevelConfig
 import me.zoemartin.rubie.database.entities.UserLevel
 import me.zoemartin.rubie.jobs.TempBlockLevels
-import me.zoemartin.rubie.managers.Levels
 import me.zoemartin.rubie.managers.Levels.calcLevel
 import me.zoemartin.rubie.managers.Levels.clearGuildCache
 import me.zoemartin.rubie.managers.Levels.getConfig
